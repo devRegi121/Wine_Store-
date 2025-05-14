@@ -1,0 +1,28 @@
+<mat-toolbar class="navbar">
+  <img src="/assets/logo.png" class="logo"/>
+  <div class="nav-links">
+    <div class="dropdown" *ngFor="let r of routes">
+      <button mat-button class="dropdown-button">
+        {{ r.label }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <div class="dropdown-menu">
+        <a 
+          mat-menu-item 
+          *ngFor="let route of r.subRoutes" 
+          [routerLink]="route.path" 
+          routerLinkActive="active-link">
+          {{ route.label }}
+        </a>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
